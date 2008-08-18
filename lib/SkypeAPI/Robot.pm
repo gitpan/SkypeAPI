@@ -6,6 +6,7 @@ use warnings;
 use SkypeAPI;
 use XiaoI;
 use Data::Dumper;
+our $VERSION = '0.02';
 
 my $instance = undef;
 
