@@ -4,11 +4,11 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     NAME              => 'SkypeAPI::Win',
-    VERSION_FROM      => 'lib/SkypeAPI/Win.pm', # finds $VERSION
+    VERSION_FROM      => 'lib/SkypeAPI.pm', # finds $VERSION
     PREREQ_PM         => {}, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/SkypeAPI/Win.pm', # retrieve abstract from module
-       AUTHOR         => 'A. U. Thor <a.u.thor@a.galaxy.far.far.away>') : ()),
+      (ABSTRACT_FROM  => 'lib/SkypeAPI.pm', # retrieve abstract from module
+       AUTHOR         => 'laomoi <laomoi@gmail.com>') : ()),
     LIBS              => [''], # e.g., '-lm'
     DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
     INC               => '-I.', # e.g., '-I. -I/usr/include/other'

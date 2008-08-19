@@ -8,7 +8,7 @@ require Exporter;
 use Class::Accessor::Fast;
 our @ISA = qw(Exporter Class::Accessor::Fast);
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 # Preloaded methods go here.
