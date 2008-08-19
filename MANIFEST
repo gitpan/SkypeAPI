@@ -3,6 +3,6 @@ Makefile.PL
 MANIFEST
 ppport.h
 README
-SkypeAPI.xs
-t/SkypeAPI.t
-lib/SkypeAPI.pm
+Win.xs
+t/SkypeAPI-Win.t
+lib/SkypeAPI/Win.pm
