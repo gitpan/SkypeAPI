@@ -8,7 +8,7 @@ require Exporter;
 use Class::Accessor::Fast;
 our @ISA = qw(Exporter Class::Accessor::Fast);
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 # Preloaded methods go here.
@@ -145,7 +145,7 @@ SkypeAPI - Skype API simple implementation, only support windows platform now.
 
 =head1 VERSION
 
-0.04
+0.06
 
 =head1 SYNOPSIS
 
