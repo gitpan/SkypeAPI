@@ -9,6 +9,7 @@ use Class::Accessor::Fast;
 
 our @ISA = qw(Exporter Class::Accessor::Fast);
 
+our $VERSION = '0.07';
 
 require XSLoader;
 XSLoader::load('SkypeAPI::Win', $VERSION);

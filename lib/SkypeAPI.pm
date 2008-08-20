@@ -8,7 +8,7 @@ require Exporter;
 use Class::Accessor::Fast;
 our @ISA = qw(Exporter Class::Accessor::Fast);
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 
 # Preloaded methods go here.
@@ -145,7 +145,7 @@ SkypeAPI - Skype API simple implementation, only support windows platform now.
 
 =head1 VERSION
 
-0.06
+0.07
 
 =head1 SYNOPSIS
 
@@ -197,13 +197,14 @@ Add listener to the chain of message handler.
 
 =head2 SkypeAPI->listen( )
 
-After you register handlers, call $skype->listen to entery the message loop;
+After you register handlers, call $skype->listen to enter the message loop;
 
     $skype->listen();
 
 =head2 SkypeAPI->stop_listen( )
 
 Call stop_listen in your handler to exit the message loop
+
     sub handler {
         my $skype = shift;
         my $msg = shift;
