@@ -8,7 +8,7 @@ require Exporter;
 use Class::Accessor::Fast;
 our @ISA = qw(Exporter Class::Accessor::Fast);
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 # Preloaded methods go here.
@@ -17,7 +17,7 @@ use Time::HiRes qw( sleep );
 use threads::shared;
 use Digest::MD5;
 use Data::Dumper;
-
+use SkypeAPI::Command;
 $| = 1;
 
 __PACKAGE__->mk_accessors(
@@ -57,6 +57,7 @@ sub wait_available {
 sub send_command {
     my $self = shift;
     my $command = shift;
+    my $try_times = shift || 10;
     
     {
         lock(%command_list);
@@ -66,7 +67,15 @@ sub send_command {
     
     my $command_string = sprintf("#%s %s", $command->id, $command->string);
     printf("[send]$command_string\n");
-    $self->api->send_message($command_string);
+    my $send_ok = 0;
+    for (1..$try_times) {
+        if ( $self->api->send_message($command_string) ) {
+            $send_ok = 1;
+            last;
+        }
+    }
+    return undef if not $send_ok;
+    
     
     if ($command->blocking) {
         {
@@ -145,7 +154,7 @@ SkypeAPI - Skype API simple implementation, only support windows platform now.
 
 =head1 VERSION
 
-0.07
+0.06
 
 =head1 SYNOPSIS
 
@@ -169,9 +178,11 @@ Returns a SkypeAPI object.
 
 Attach to skype, return 1 if attached ok.
 
-=head2 SkypeAPI->send_command( $command_object )
+=head2 SkypeAPI->send_command( $command_object, [$try_times] )
 
 Send command to skype, return the reponse of skype
+
+It sometimes failed when sending message to skype, so we have to retry sending message. $try_times default is 10.
 
 =head2 SkypeAPI->create_command( $opt )
 
